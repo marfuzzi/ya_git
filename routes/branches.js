@@ -37,6 +37,6 @@ const getHashes = (req) => {
 };
 
 const getInfoHash = (hash) => {
-    return spawnProcess('git', ['show', '-s', '--format=%H%n%an%n%cd%n%cn', `${hash}`], {cwd: `${myRepo}`})
+    return spawnProcess('git', ['show', '-s', '--format=%h%n%an%n%cd%n%cn', `${hash}`], {cwd: `${myRepo}`})
 };
 module.exports = router;
