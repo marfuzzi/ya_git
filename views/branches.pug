@@ -4,7 +4,8 @@ block content
   h1= title
   ul
   each val in hashes
-    li= val.hash
+    li
+        a(href=`/commit/${val.hash}`)= val.hash
     li= val.autor
     li= val.date
 

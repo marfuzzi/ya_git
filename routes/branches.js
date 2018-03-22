@@ -22,7 +22,7 @@ router.get('/:name', (req, res) => {
             let info = infoString.toString().split('\n');
             return { hash: info[0],
                      autor: info[1],
-                     date: info[2],
+                     date: new Date(info[2]).toDateString(),
             }
         })
     }).then((data)=>{
@@ -37,6 +37,6 @@ const getHashes = (req) => {
 };
 
 const getInfoHash = (hash) => {
-    return spawnProcess('git', ['show', '-s', '--format=%H%n%an%n%cd%cn', `${hash}`], {cwd: `${myRepo}`})
+    return spawnProcess('git', ['show', '-s', '--format=%H%n%an%n%cd%n%cn', `${hash}`], {cwd: `${myRepo}`})
 };
 module.exports = router;
