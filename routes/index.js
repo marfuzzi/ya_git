@@ -1,18 +1,18 @@
 const express = require('express');
 const router = express.Router();
+
 const config = require('../config/config');
-const cp = require('child_process');
 const myRepo = config.pathToFile;
 
-router.get('/', function(req, res, next) {
-    console.log('sfsdfsd');
-    //res.send('234');
-    cp.exec(`cd ${myRepo} && git branch`, (err, stdout, stderr) => {
-       res.render('index', {branches: getBranches(stdout)});
-        if(err) {
-            console.log('err: ' + err);
-        }
-    });
+const execProcess = require('./execProcess');
+
+router.get('/', (req, res) => {
+    execProcess(`cd ${myRepo} && git branch`)
+    .then((stdout)=>{
+        res.render('index', {branches: getBranches(stdout)})
+    }).catch((err) => {
+        // ??? рендер ошибки
+    })
 });
 
 const getBranches = (stdout) => {
