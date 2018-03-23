@@ -6,8 +6,8 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var branchesRouter = require('./routes/branch');
-var pathRouter = require('./routes/catalog');
-var commitRouter = require('./routes/commit');
+var fileRouter = require('./routes/file');
+var catalogRouter = require('./routes/catalog');
 
 
 var app = express();
@@ -24,8 +24,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/branch', branchesRouter);
-app.use('/catalog', pathRouter);
-app.use('/commit', commitRouter);
+app.use('/file', fileRouter);
+app.use('/catalog', catalogRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

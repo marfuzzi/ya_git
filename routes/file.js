@@ -6,9 +6,8 @@ const myRepo = config.pathToFile;
 
 const execProcess = require('../helpers/execProcess');
 const controllerCommit = require('../controllers/commit')
-const controllerCatalog = require('../controllers/catalog')
+const controller = require('../controllers/data')
 
-router.get('/:name', controllerCatalog.getFile);
+router.get('/:file', controller.getData);
 
 module.exports = router;
-
