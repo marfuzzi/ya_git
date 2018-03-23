@@ -1,10 +1,16 @@
+extends layout
+
 block content
-  h1= title
-    ul
-    each val in fileList
-        if val.blob
-            li
-            a(href=`/file/${val.hash}`)= val.blob
-        else
-            li
-            a(href=`/catalog/${val.hash}`)= val.tree
+    table(class='table_col')
+        tr
+            th= 'Files'
+            tbody
+                each val in fileList
+                    tr
+                    if (val.type === 'blob')
+                        td
+                            a(href=`/file/${val.hash}`)= val.name
+                    else
+                        td
+                            div(class='folder')
+                            a(href=`/catalog/${val.hash}`)= val.name

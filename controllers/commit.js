@@ -2,10 +2,8 @@
 const router = require('express').Router();
 const myRepo = require('../config/config').pathToFile;
 
-const execProcess = require('../helpers/execProcess');
 const spawnProcess = require('../helpers/spawnProcess');
 const strToArray = require('../helpers/strToArray');
-const getData = require('../helpers/getData');
 
 const getCommit = (req, res) => {
     // получаем список хешей
@@ -20,12 +18,14 @@ const getCommit = (req, res) => {
     }).then((data)=>{
         res.render('commit', {hashes: data})
     }).catch((err) => {
-        // ??? рендер ошибки
+        res.render('error', {
+            message: 'Такого коммита не существует'
+        });
     });
 };
 
 const getHashes = (req) => {
-    return spawnProcess('git', ['log', `${req.params['name']}`,'--pretty=format:%H'], {cwd: `${myRepo}`})
+    return spawnProcess('git', ['log', `${req.params['name']}`,'--pretty=format:%h'], {cwd: `${myRepo}`})
     .then((stdout) => {return strToArray(stdout)});
 };
 
@@ -35,12 +35,9 @@ const getInfoHashes = (hash) => {
 
 const infoHashesToObjects = (infoHashes) => {
     return infoHashes.map((infoString) => {
-        let info = strToArray(infoString);
-        return { hash: info[0],
-                 autor: info[1],
-                 date: new Date(info[2]).toDateString(),
-        }
+        let [hash,autor, date ]= strToArray(infoString);
+        date = new Date(date).toDateString()
+        return { hash, autor,date };
     })
 };
 module.exports = { getCommit };
-

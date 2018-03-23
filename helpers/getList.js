@@ -9,7 +9,7 @@ const getList = (hash) => {
     .then((str) => {
         return strToObj(str)
     }).catch((err) => {
-        // ??? рендер ошибки
+        reject(error);
     })
 };
 

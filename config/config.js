@@ -1,3 +1,3 @@
 module.exports = {
-    pathToFile: '/Users/event/shri/3/ya_multimedia'
+    pathToFile: '/Users/event/shri/2/ya_touch'
 }

@@ -1,11 +1,17 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome
-    ul
-  each val in branches
-    li
-        a=val
-        a(href=`/branch/${val}/catalog`)='Файлы'
-        a(href=`/branch/${val}/commit`)='Коммиты'
+    table(class='table_col')
+        tr
+            th= 'Branches'
+            th= 'Files'
+            th= 'Commits'
+            tbody
+                each val in branches
+                    tr
+                        td
+                            a=val
+                        td
+                            a(href=`/${val}/catalog`)= 'Файлы'
+                        td
+                            a(href=`/${val}/commit`)= 'Коммиты'

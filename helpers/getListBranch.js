@@ -1,7 +1,7 @@
-const listBranch = (str) => {
+const getListBranch = (str) => {
     return str.split('\n').filter(Boolean).map((branch)=>{
         return branch.replace('*', '').trim();
     })
 };
 
-module.exports = listBranch;
+module.exports = getListBranch;

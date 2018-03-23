@@ -1,10 +1,15 @@
 extends layout
 
 block content
-    h1= title
-    ul
-    each val in hashes
-        li
-            a(href=`/catalog/${val.hash}`)= val.hash
-        li= val.autor
-        li= val.date
+    table(class='table_col')
+        tr
+            th= 'Коммиты'
+            th= 'Автор'
+            th= 'Дата'
+            tbody
+                each val in hashes
+                    tr
+                        td
+                            a(href=`/catalog/${val.hash}`)= val.hash
+                        td= val.autor
+                        td= val.date

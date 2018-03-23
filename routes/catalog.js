@@ -1,14 +1,7 @@
-const express = require('express');
-const router = express.Router();
-
-const config = require('../config/config');
-const myRepo = config.pathToFile;
-
-const execProcess = require('../helpers/execProcess');
-const controllerCommit = require('../controllers/commit')
+const router = require('express').Router();
 const controllerCatalog = require('../controllers/catalog')
 
-router.get('/:name', controllerCatalog.getFile);
+router.get('/:name', controllerCatalog.getCatalog);
 
 module.exports = router;
 

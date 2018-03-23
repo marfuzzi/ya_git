@@ -1,11 +1,10 @@
 const router = require('express').Router();
-const myRepo = require('../config/config').pathToFile;
+const controllerBranch = require('../controllers/branch');
+const controllerCommit = require('../controllers/commit')
+const controllerCatalog = require('../controllers/catalog')
 
-const controller = require('../controllers/branch');
-const controllerFile = require('../controllers/catalog');
-const controllerCommit = require('../controllers/commit');
-
-router.get('/', controller.getBranch);
-
+router.get('/', controllerBranch.getBranch);
+router.get('/:name/commit', controllerCommit.getCommit);
+router.get('/:name/catalog', controllerCatalog.getCatalog);
 
 module.exports = router;
