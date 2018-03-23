@@ -1,24 +1,11 @@
-const express = require('express');
-const router = express.Router();
+const router = require('express').Router();
+const myRepo = require('../config/config').pathToFile;
 
-const config = require('../config/config');
-const myRepo = config.pathToFile;
+const controller = require('../controllers/branch');
+const controllerFile = require('../controllers/catalog');
+const controllerCommit = require('../controllers/commit');
 
-const execProcess = require('./execProcess');
+router.get('/', controller.getBranch);
 
-router.get('/', (req, res) => {
-    execProcess(`cd ${myRepo} && git branch`)
-    .then((stdout)=>{
-        res.render('index', {branches: getBranches(stdout)})
-    }).catch((err) => {
-        // ??? рендер ошибки
-    })
-});
-
-const getBranches = (stdout) => {
-    return stdout.split('\n').filter(Boolean).map((branch)=>{
-        return branch.replace('*', '').trim();
-    })
-};
 
 module.exports = router;

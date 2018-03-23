@@ -1,0 +1,10 @@
+block content
+  h1= title
+    ul
+    each val in fileList
+        if val.blob
+            li
+            a(href=`/catalog/${val.hash}`)= val.blob
+        else
+            li
+            a(href=`/catalog/${val.hash}`)= val.tree

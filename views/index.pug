@@ -6,4 +6,6 @@ block content
     ul
   each val in branches
     li
-        a(href=`/branches/${val}`)=val
+        a=val
+        a(href=`/branch/${val}/catalog`)='Файлы'
+        a(href=`/branch/${val}/commit`)='Коммиты'
