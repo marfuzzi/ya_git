@@ -3,7 +3,6 @@
 const gulp = require('gulp');
 const newer = require('gulp-newer');
 const imagemin = require('gulp-imagemin');
-const htmlclean = require('gulp-htmlclean');
 const concat = require('gulp-concat');
 const deporder = require('gulp-deporder');
 const stripdebug = require('gulp-strip-debug');
@@ -14,14 +13,11 @@ const assets = require('postcss-assets');
 const autoprefixer = require('autoprefixer');
 const mqpacker = require('css-mqpacker');
 const cssnano = require('cssnano');
-const browserSync = require('browser-sync').create();
-const gulpCopy = require('gulp-copy');
-const reload = browserSync.reload;
 // development mode?
 const devBuild = (process.env.NODE_ENV !== 'production');
 // folders
 const folder = {
-    src: 'public/',
+    src: 'src/',
     build: 'build/'
 };
 
@@ -60,7 +56,7 @@ gulp.task('css', ['images'], function () {
         postCssOpts.push(cssnano);
     }
 
-    return gulp.src(folder.src + 'scss/**/*')
+    return gulp.src(folder.src + 'scss/index.scss')
         .pipe(sass({
             outputStyle: 'nested',
             imagePath: 'images/',
@@ -76,9 +72,6 @@ gulp.task('run', ['css', 'js']);
 
 // watch for changes
 gulp.task('watch', function () {
-    browserSync.init({
-        server: folder.build
-    });
     // javascript changes
     gulp.watch(folder.src + 'js/**/*', ['js']);
     // css changes
