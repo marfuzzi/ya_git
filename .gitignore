@@ -1,3 +1,12 @@
-.DS_Store
-/node_modules/
+# Logs
 npm-debug.*
+
+# Editor
+.vscode
+
+# Dependency directory
+node_modules/
+
+# Other files
+package-lock.json
+.DS_Store
