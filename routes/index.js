@@ -1,3 +1,4 @@
+/* eslint new-cap: ["error", { "capIsNew": false }]*/
 const router = require('express').Router();
 const controllerBranch = require('../controllers/branch');
 const controllerCommit = require('../controllers/commit');

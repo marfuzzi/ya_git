@@ -7,7 +7,7 @@ body {
 a {
   color: #00b7ff; }
 
-.table_col {
+.table {
   font-family: 'Lucida Sans Unicode', 'Lucida Grande', Sans-Serif;
   font-size: 14px;
   width: 660px;
@@ -16,14 +16,14 @@ a {
   color: #3e4347;
   background: white; }
 
-.table_col th {
+.table th {
   font-weight: normal;
   padding: 8px 10px;
   border-right: 20px solid white;
   border-bottom: 2px solid #f5e1a6;
   border-left: 20px solid white; }
 
-.table_col td {
+.table td {
   padding: 12px 10px;
   color: #8b8e91;
   border-right: 20px solid white;

@@ -1,3 +1,4 @@
+/* eslint new-cap: ["error", { "capIsNew": false }]*/
 const router = require('express').Router();
 const controllerCatalog = require('../controllers/catalog');
 
