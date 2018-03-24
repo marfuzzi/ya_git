@@ -3,7 +3,8 @@ extends layout
 block content
     table(class='table_col')
         tr
-            th= 'Коммиты'
+            th= 'Коммит'
+            th= 'Название коммита'
             th= 'Автор'
             th= 'Дата'
             tbody
@@ -11,5 +12,6 @@ block content
                     tr
                         td
                             a(href=`/catalog/${val.hash}`)= val.hash
+                        td= val.name
                         td= val.autor
                         td= val.date

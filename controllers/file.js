@@ -3,13 +3,13 @@ const execProcess = require('../helpers/execProcess');
 
 const getFile = (req, res) => {
     execProcess(`git cat-file -p ${req.params.file}`, {cwd: `${myRepo}`})
-   .then((body) => {
-        res.render('file', { data: body})
-     }).catch((error) => {
-        res.render('error', {
-            message: 'Такого файла не существует',
+        .then((body) => {
+            res.render('file', {data: body});
+        }).catch((error) => {
+            res.render('error', {
+                message: 'Такого файла не существует',
+            });
         });
-     });
 };
 
-module.exports = { getFile };
+module.exports = {getFile};

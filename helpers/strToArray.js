@@ -3,11 +3,3 @@ const strToArray = (str) => {
 };
 
 module.exports = strToArray;
-
-
-
-
-
-
-
-

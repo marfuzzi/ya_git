@@ -1,10 +1,13 @@
 {
   "name": "ya-node",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "dev": "export NODE_ENV=development&& nodemon ./bin/www"
+    "dev": "export NODE_ENV=development&& nodemon ./bin/www",
+    "lint": "eslint **/*.js; exit 0",
+    "deploy": "gh-pages -d build",
+    "csslint": "csscomb -v public/stylesheets/*.css"
   },
   "dependencies": {
     "cookie-parser": "~1.4.3",
@@ -15,6 +18,9 @@
     "pug": "2.0.0-beta11"
   },
   "devDependencies": {
+    "csscomb": "^4.2.0",
+    "eslint": "^4.19.1",
+    "eslint-config-yandex": "^1.0.6",
     "nodemon": "^1.17.2"
   }
 }
