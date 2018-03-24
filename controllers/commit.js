@@ -2,7 +2,9 @@
 const {router} = require('express');
 const myRepo = require('../config/config').pathToFile;
 
+const execProcess = require('../helpers/execProcess');
 const spawnProcess = require('../helpers/spawnProcess');
+
 const strToArray = require('../helpers/strToArray');
 
 const getCommit = (req, res) => {
@@ -16,7 +18,6 @@ const getCommit = (req, res) => {
         }).then((infoHashes)=> {
             return infoHashesToObjects(infoHashes);
         }).then((data)=>{
-        //   console.log(data);
             res.render('commit', {hashes: data});
         }).catch((err) => {
             res.render('error', {
@@ -26,19 +27,17 @@ const getCommit = (req, res) => {
 };
 
 const getHashes = (req) => {
-    return spawnProcess('git', ['log', `${req.params['name']}`,'--pretty=format:%h'], {cwd: `${myRepo}`})
+    return execProcess(`git log ${req.params.name} --pretty=format:%h`, {cwd: `${myRepo}`})
         .then((stdout) => {
             return strToArray(stdout);
         });
 };
-
 const getInfoHashes = (hash) => {
     return spawnProcess('git', ['show', '-s', '--format=%h%n%an%n%cd%n%s', `${hash}`], {cwd: `${myRepo}`});
 };
 
 const infoHashesToObjects = (infoHashes) => {
     return infoHashes.map((infoString) => {
-        console.log(strToArray(infoString));
         let [hash,autor, date, name]= strToArray(infoString);
         date = new Date(date).toDateString();
         return {hash, autor,date, name};
