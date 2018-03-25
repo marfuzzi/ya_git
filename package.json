@@ -2,7 +2,7 @@
   "name": "ya-node",
   "version": "1.0.0",
   "scripts": {
-    "start": "node ./bin/www",
+    "start": "gulp build && node ./bin/www",
     "build": "npm run lint && gulp build",
     "dev": "export NODE_ENV=development&& nodemon ./bin/www",
     "lint": "eslint **/*.js && csscomb -v src/scss/*.scss",
