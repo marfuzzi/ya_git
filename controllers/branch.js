@@ -9,7 +9,7 @@ const getBranch = (req, res) => {
             res.render('index', {branches: getListBranch(data)});
         }).catch((err) => {
             res.render('error', {
-                message: 'Такой ветки не существует',
+                message: 'Такого репозитория не существует',
             });
         });
 };

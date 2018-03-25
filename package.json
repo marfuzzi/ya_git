@@ -1,14 +1,14 @@
 {
   "name": "ya-node",
   "version": "1.0.0",
-  "private": true,
   "scripts": {
     "start": "node ./bin/www",
+    "build": "gulp build",
     "test": "mocha \"**/*.test.js\"",
-    "dev": "export NODE_ENV=development&& nodemon ./bin/www&& gulp",
+    "dev": "export NODE_ENV=development&& nodemon ./bin/www && gulp",
     "lint": "eslint **/*.js",
     "deploy": "gh-pages -d build",
-    "csslint": "csscomb -v public/stylesheets/*.css"
+    "csslint": "csscomb -v src/scss/*.scss"
   },
   "dependencies": {
     "cookie-parser": "~1.4.3",

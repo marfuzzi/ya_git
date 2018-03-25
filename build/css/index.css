@@ -29,7 +29,7 @@ a {
   border-right: 20px solid white;
   border-left: 20px solid white; }
 
-.fileData {
+.data {
   font-size: 12px;
   width: 80%;
   color: #8b8e91; }
@@ -43,3 +43,12 @@ a {
   background-image: url("../images/folder.svg");
   background-position: 50% 50%;
   background-size: cover; }
+
+.back {
+  width: 25px;
+  height: 25px;
+  margin-left: 40px;
+  cursor: pointer;
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+  background-image: url("../images/back.svg"); }

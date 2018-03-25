@@ -1,6 +1,7 @@
 extends layout
 
 block content
+    .back
     table(class='table')
         tr
             th= 'Files'
@@ -12,5 +13,5 @@ block content
                             a(href=`/file/${val.hash}`)= val.name
                     else
                         td
-                            div(class='folder')
+                            .folder
                             a(href=`/catalog/${val.hash}`)= val.name

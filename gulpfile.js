@@ -68,7 +68,7 @@ gulp.task('css', ['images'], function () {
 });
 
 // run all tasks
-gulp.task('run', ['css', 'js']);
+gulp.task('build', ['css', 'js']);
 
 // watch for changes
 gulp.task('watch', function () {
@@ -78,5 +78,4 @@ gulp.task('watch', function () {
     gulp.watch(folder.src + 'scss/**/*', ['css']);
 });
 
-// default task
-gulp.task('default', ['watch', 'run']);
+gulp.task('default', ['watch', 'build']);
