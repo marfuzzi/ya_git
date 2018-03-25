@@ -5,6 +5,7 @@ npm-debug.*
 .vscode
 
 # Dependency directory
+build/*
 node_modules/
 
 # Other files
