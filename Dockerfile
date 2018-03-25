@@ -1,19 +1,22 @@
-FROM node:carbon
+FROM node:8
 
-# Create app directory
-WORKDIR /usr/src/app
+RUN mkdir /app
 
-# Install app dependencies
-# A wildcard is used to ensure both package.json AND package-lock.json are copied
-# where available (npm@5+)
-COPY package*.json ./
+WORKDIR /app
 
-#RUN npm install
-# If you are building your code for production
-RUN npm install --only=production
+COPY . /app
 
-# Bundle app source
-COPY . .
+RUN git clone https://github.com/marfuzzi/md2xliff.git test-git
 
-EXPOSE 3030
-CMD [ "npm", "start" ]
+WORKDIR /app/test-git
+
+# Подтянуть все веточки
+RUN for branch in $(git branch --all | grep '^\s*remotes' | egrep --invert-match '(:?HEAD|master)$'); do git branch --track "${branch##*/}" "$branch"; done
+
+WORKDIR /app
+
+RUN npm install
+
+EXPOSE 3000
+
+CMD npm start

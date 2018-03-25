@@ -23,7 +23,6 @@
     "autoprefixer": "^8.1.0",
     "babel-core": "^6.26.0",
     "babel-preset-env": "^1.6.1",
-    "babel-preset-minify": "^6.24.1",
     "css-mqpacker": "^6.0.2",
     "csscomb": "^4.2.0",
     "cssnano": "^3.10.0",
