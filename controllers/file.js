@@ -7,7 +7,7 @@ const getFile = (req, res) => {
             res.render('file', {data: body});
         }).catch((error) => {
             res.render('error', {
-                message: 'Такого файла не существует',
+                message: 'Файл невозможно отобразить',
             });
         });
 };

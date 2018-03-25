@@ -13,6 +13,8 @@ const assets = require('postcss-assets');
 const autoprefixer = require('autoprefixer');
 const mqpacker = require('css-mqpacker');
 const cssnano = require('cssnano');
+const babel = require('gulp-babel');
+
 // development mode?
 const devBuild = (process.env.NODE_ENV !== 'production');
 // folders
@@ -34,7 +36,8 @@ gulp.task('images', function () {
 gulp.task('js', function () {
     const jsbuild = gulp.src(folder.src + 'js/**/*')
         .pipe(deporder())
-        .pipe(concat('index.js'));
+        .pipe(concat('index.js'))
+        .pipe(babel());
 
     if (!devBuild) {
         jsbuild = jsbuild
