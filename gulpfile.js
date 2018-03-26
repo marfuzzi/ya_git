@@ -19,7 +19,7 @@ const babel = require('gulp-babel');
 const devBuild = (process.env.NODE_ENV !== 'production');
 // folders
 const folder = {
-    src: 'src/',
+    src: 'client/',
     build: 'build/'
 };
 

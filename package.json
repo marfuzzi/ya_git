@@ -5,7 +5,7 @@
     "start": "gulp build && node ./bin/www",
     "build": "npm run lint && gulp build",
     "dev": "export NODE_ENV=development&& nodemon ./bin/www",
-    "lint": "eslint **/*.js && csscomb -v src/scss/*.scss",
+    "lint": "eslint --ignore-path .gitignore . && csscomb -v client/scss/*.scss",
     "babel": "babel",
     "test": "mocha \"**/*.test.js\"",
     "clean": "rimraf node_modules",
