@@ -1,3 +1,3 @@
 module.exports = {
-    pathToFile: 'test-git'
+    pathToFile: '/Users/event/shri/4/ya_node'
 };

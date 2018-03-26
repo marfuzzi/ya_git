@@ -1,5 +1,5 @@
 const myRepo = require('../config/config').pathToFile;
-const execProcess = require('../helpers/execProcess');
+const execProcess = require('../utils/execProcess');
 
 const getFile = (req, res) => {
     execProcess(`git cat-file -p ${req.params.file}`, {cwd: `${myRepo}`})

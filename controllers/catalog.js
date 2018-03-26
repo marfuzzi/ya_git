@@ -1,7 +1,7 @@
-const getList = require('../helpers/getList');
+const catalogHelper = require('../helpers/catalogHelper');
 
 const getCatalog =(req, res) => {
-    return getList(req.params.name)
+    return catalogHelper.getList(req.params.name)
         .then((data)=> {
             res.render('catalog', {fileList: data});
         }).catch((err) => {
