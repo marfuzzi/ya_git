@@ -1,4 +1,4 @@
-sudo: false
+sudo: required
 language: node_js
 
 node_js:
@@ -14,3 +14,8 @@ script:
 
 services:
  - docker
+
+ deploy:
+  provider: heroku
+  api_key:
+    secure: ""
