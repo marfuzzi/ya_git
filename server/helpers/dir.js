@@ -1,7 +1,7 @@
 const myRepo = require('../config/config').pathToFile;
 const spawnProcess = require('../utils/spawnProcess');
 
-class CatalogHelper {
+class Dir {
     constructor() {
         this.spawnProcess = spawnProcess;
     }
@@ -18,7 +18,7 @@ class CatalogHelper {
         });
     }
 
-    getList(hash) {
+    getDirList(hash) {
         return this.spawnProcess('git', ['ls-tree', `${hash}`], {cwd: `${myRepo}`})
             .then((str) => {
                 return this.getTypeHashName(str);
@@ -27,6 +27,6 @@ class CatalogHelper {
             });
     }
 }
-const catalogHelper = new CatalogHelper();
+const dir = new Dir();
 
-module.exports = catalogHelper;
+module.exports = dir;

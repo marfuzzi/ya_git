@@ -1,4 +1,4 @@
-class BranchHelper {
+class Branch {
 
     getListBranch(str) {
         return str.split('\n').filter(Boolean).map((branch)=>{
@@ -6,6 +6,6 @@ class BranchHelper {
         });
     }
 }
-const branchHelper = new BranchHelper();
+const branch = new Branch();
 
-module.exports = branchHelper;
+module.exports = branch;

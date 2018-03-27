@@ -1,11 +1,11 @@
 /* eslint new-cap: ["error", { "capIsNew": false }]*/
 const router = require('express').Router();
-const controllerBranch = require('../controllers/branch');
-const controllerCommit = require('../controllers/commit');
-const controllerCatalog = require('../controllers/catalog');
+const branchController = require('../controllers/branchController');
+const commitController = require('../controllers/commitController');
+const dirController = require('../controllers/dirController');
 
-router.get('/', controllerBranch.getBranch);
-router.get('/:name/commit', controllerCommit.getCommit);
-router.get('/:name/catalog', controllerCatalog.getCatalog);
+router.get('/', branchController.getBranch);
+router.get('/:name/commit', commitController.getCommit);
+router.get('/:name/dir', dirController.getDir);
 
 module.exports = router;
