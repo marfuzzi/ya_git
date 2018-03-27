@@ -1,16 +1,24 @@
-const myRepo = require('../config/config').pathToFile;
-const execProcess = require('../utils/execProcess');
+const childProcess = require('../helpers/childProcess');
 const branch = require('../helpers/branch');
 
-const getBranch = (req, res) => {
-    execProcess('git branch', {cwd: `${myRepo}`})
-        .then((data) => {
-            res.render('index', {branches: branch.getListBranch(data)});
-        }).catch((err) => {
-            res.render('error', {
-                message: 'Такого репозитория не существует',
-            });
-        });
-};
+class BranchController {
 
-module.exports = {getBranch};
+    constructor() {
+        this.childProcess = childProcess;
+    }
+
+    getBranch(req, res) {
+        this.childProcess.getBranch()
+            .then((data) => {
+                res.render('index', {branches: branch.getListBranch(data)});
+            }).catch((err) => {
+                res.render('error', {
+                    message: 'Такого репозитория не существует',
+                });
+            });
+    }
+}
+
+const branchController = new BranchController();
+
+module.exports = branchController;

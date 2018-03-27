@@ -1,13 +1,27 @@
+const childProcess = require('../helpers/childProcess');
 const dir = require('../helpers/dir');
 
-const getDir =(req, res) => {
-    return dir.getDirList(req.params.name)
-        .then((data) => {
-            res.render('dir', {fileList: data});
-        }).catch((err) => {
-            res.render('error', {
-                message: 'Такой дирректории не существует',
+class DirController {
+
+    constructor() {
+        this.childProcess = childProcess;
+    }
+
+    getDir(req, res) {
+        const hash = req.params.name;
+        this.childProcess.getDirTree(hash)
+            .then((data) => {
+                return dir.getTypeHashName(data);
+            }).then((data) => {
+                res.render('dir', {fileList: data});
+            }).catch((err) => {
+                res.render('error', {
+                    message: 'Такой дирректории не существует',
+                });
             });
-        });
-};
-module.exports = {getDir};
+    }
+}
+
+const dirController = new DirController();
+
+module.exports = dirController;

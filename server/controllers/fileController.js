@@ -1,15 +1,24 @@
-const myRepo = require('../config/config').pathToFile;
-const execProcess = require('../utils/execProcess');
+const childProcess = require('../helpers/childProcess');
 
-const getFile = (req, res) => {
-    execProcess(`git cat-file -p ${req.params.file}`, {cwd: `${myRepo}`})
-        .then((body) => {
-            res.render('file', {data: body});
-        }).catch((error) => {
-            res.render('error', {
-                message: 'Файл невозможно отобразить',
+class FileController {
+
+    constructor() {
+        this.childProcess = childProcess;
+    }
+
+    getDataFile(req, res) {
+        const file = req.params.file;
+        this.childProcess.getDataFile(file)
+            .then((body) => {
+                res.render('file', {data: body});
+            }).catch((error) => {
+                res.render('error', {
+                    message: 'Файл невозможно отобразить',
+                });
             });
-        });
-};
+    }
+}
 
-module.exports = {getFile};
+const fileController = new FileController();
+
+module.exports = fileController;
