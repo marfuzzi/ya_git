@@ -6,7 +6,7 @@
     "build": "npm run lint && gulp build",
     "dev": "export NODE_ENV=development&& nodemon ./bin/www",
     "lint": "eslint --ignore-path .gitignore . && csscomb -v client/scss/*.scss",
-    "test": "mocha \"**/*.test.js\"",
+    "test": "mocha test/utils/*.test.js && mocha test/controllers/*.test.js && mocha test/helpers/*.test.js ",
     "clean": "rimraf node_modules",
     "deploy": "gh-pages -d build"
   },
@@ -23,6 +23,7 @@
     "autoprefixer": "^8.1.0",
     "babel-core": "^6.26.0",
     "babel-preset-env": "^1.6.1",
+    "chai": "^4.1.2",
     "css-mqpacker": "^6.0.2",
     "csscomb": "^4.2.0",
     "cssnano": "^3.10.0",
