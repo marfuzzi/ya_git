@@ -31,7 +31,6 @@ jobs:
     if: tag IS present
     deploy:
       <<: *deploy
-      skip_cleanup: true
       app: ya-git-prod
       on:
         tags: true
