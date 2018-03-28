@@ -5,38 +5,30 @@ node_js:
 before_script:
 - npm i
 script:
-- npm run lint
 - npm run build
 cache:
   directories:
   - node_modules
 aliases:
-  deploy:
+  deploy: &deploy
     provider: heroku
     api_key: &1
-      secure: c9OMoHzV8R63oXVEVDev1eS2lGpWCgxt+BydXZylbKpdK3H0MdWtv5eDGxdw57KhxBO6D6HLtfE/iFfc4GH0L7zy56D1tzXzh1O32E7SoUpyZQzVvusJgP4MbHbe5ulmMXLb9dcVPpHmHaVc4z1qjAp4FHwONYX34l3/MP4KURn/p8dEMuUFiSSBkdljJPVtE8eLoX5dlBQK2Tuz81OsuYnwp91t5s0klpXQnEJ83j5LFLPTjoPWgmcMGES212Vd5chyMSmgasBei/G4ru3ebPsAWl8O0z0ObJW+G4SZ2FlLZeSc+BkAr6WYJ7V5SMZZgtH84ywl7j/sHv/qo7LogJG+vXpcZFZP5KyUdYGGR1TNPjh6Rg+M3VF4pS5iReij/a04waS2thpyUhrNCROa2/5XI1qekXAMUi1ZA/O3/KBJ6Di2cHg6JqKgAJ7JFwQEW09rPYgcDYDuUxdgH8lWNHsJFYw+tYSY0GTBOAi57VEMP6+xnOd0mPopatTD8eoGBj0fGkVH71+rk3X4BxAnid3+Hv434yTJC2E8EosGqH1bS22bSx0prT1/IVwFukxJspDuZ/Kikshdda0NDFVxero2ne9dFiWy1LryejuG9wTuxD+sVG60kzd8LrjZwlPdbAjsOXLZfeAdv1R6nFXKUmMFKrd94sIZ8RqG+4duA9A=
-    skip_cleaning: true
+      secure: TTTqmMK0Ommfp4HBEJKysuptbErKlg2v86CbOGCz0Sn7btw7auGMdocBjzs6Y40VCEcxtek1VQ0uVlPyp5xx/exGRp2SF1LK77aPB7IH1tF/GAWBN1UvbYmpyPvh7wYggu8UBvWRJHSLRtp2ofrBQ0p5aq11XIgfIxsf0Yck927sgtT5+jVwbTnPDclxTI1ccVRZY672zRA3UFlqSE/FgHhsSDc/JrFngbDmSyJPOZo7JMqiCox3y9mE6OyFmhriTALL9TqV6+dgnRUAK8RHsW1hN28BybhHc/sALC0vGW/0XUzDTyw/jhwRtOt826olbda8geWwsdeO7iYgxnAdwLj5ymiHIjbSOM7TVo4ajaxji/JnvZKS3hqgFJ3iFXKwe19us3lgRbzHizigi1zwRH7FoGbz8I0/Hq0DAQ4S6gmq2jvRlqC0qK5v/WrQjNfLBk/c8G5X/vWtE3gqjkD2wndG892vr6Z7WTIcdGq8PyhQIzCMb9giKdVhX3oLwiqeyXjIDfEceGtJbsVUW0ysdI4o9Ch8RSZ2UdUC/YVhqAYNUR2KwrG+Jo76QWFuppLcjcMWwpagsDV//704q4+TAPgMYU81jducRfkvM2JnMSrGsjYcxJ7sFf6WIjUYaZ8gWYECopNAU+WJQx2KuJZIkK2q32uIPT85t6HwPBc+1Y0=
+    skip_cleanup: true
 jobs:
   include:
   - stage: Deploy (development)
     if: tag IS blank
     deploy:
-      provider: heroku
-      api_key: *1
-      skip_cleaning: true
+      <<: *deploy
       app: ya-git-dev
       on:
         all_branches: true
   - stage: Deploy (production)
     if: tag IS present
     deploy:
-      provider: heroku
-      api_key: *1
-      skip_cleaning: true
+      <<: *deploy
       app: ya-git-prod
       on:
         tags: true
         all_branches: true
-deploy:
-  api_key:
-    secure: WghxrRfEwdgGwhdDI7gNBYYgbNT01RMj8/0xlQl4DBG27QNXFAcr0T4Q5eTRSH3jS29+1TqaOkVwkXG2DYYR9GID1FRM0/0dm0G9XdpHUpiJP3QhgkkSmugl0fDcZOiZWxcKO0q7GinqE9KDMXsuKK4DPO5j3hKDmCi/lwTsLmxD0UxB0KSwXnIpwDz7MnglVG2Wrd6GbNL7C7oxYofvnRurwcFhLbQKkh1UnBb20dsQTlfQ5R9kUdbzz3bMNj/lbirOe88srgPD6LoEqqeu1jC1SoTvv771y+lT1KkI21GtDjwY/3xffwSWZAcJAL6H5MdKFF/oXAq+ahYCw7COqfcy/Ip/C48Dwapf3sv1jS5M/swi1ZDxY1J0hk1oe42VAZTaRkLImgYU53C9t+qo+Vr5FBrPewo2wYxLwO12vD/ddWYpugYVTmIIFBiUQY4tsJutoMWgZ9FwV3jFZF6xevTCkLO4/nn6lGQ2y3AW3uKboY1R6vmI180OFuGqNK22QidTyAQn7yHiZMCBgRPotVwyLmH7ZaYgXoyRDal3HqGlAMJYQCZE1ymIIx3O9ujfU78mAM+OPaBaKcgDSbMN3ZKFoO3ls1QO3LSGM4ZHb/26uFaSV8wl8zlPyW5pYXehMK5ogsMBWV9/dU/7ZsrSNot2Q7l5dVgV0rTlXxGKRUk=
