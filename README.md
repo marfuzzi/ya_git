@@ -53,4 +53,4 @@ npm run start
 
 **Функция getRecommendation**
 * Алгоритм функции с описанием ./utils/getRecommendation.js
-Используется:
+Используется :
