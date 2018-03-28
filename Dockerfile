@@ -6,7 +6,7 @@ WORKDIR /dir
 
 COPY . /dir
 
-RUN git clone https://github.com/marfuzzi/md2xliff ya-git
+RUN git clone https://github.com/marfuzzi/ya_git ya-git
 
 WORKDIR /dir/ya-git
 
