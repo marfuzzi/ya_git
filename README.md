@@ -95,4 +95,4 @@ editorconfig, stylelint и eslint
 Express
 Node.js
 Travis CI
-Heroku
+Heroku ku
