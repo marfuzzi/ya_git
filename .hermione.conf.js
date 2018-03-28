@@ -8,14 +8,14 @@ module.exports = {
     },
     browsers: {
         chrome: {
-        desiredCapabilities: {
-            browserName: 'chrome'
-        }
-      },
-      firefox: {
+            desiredCapabilities: {
+                browserName: 'chrome'
+            }
+        },
+        firefox: {
             desiredCapabilities: {
                 browserName: 'firefox'
-          }
+        }
       }
     }
 }
