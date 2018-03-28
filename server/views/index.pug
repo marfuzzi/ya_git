@@ -2,16 +2,16 @@ extends layout
 
 block content
     table(class='table')
-        tr
+        tr(class='table__nav')
             th= 'Branches'
             th= 'Files'
             th= 'Commits'
-            tbody
-                each val in branches
-                    tr
-                        td
-                            a=val
-                        td
-                            a(href=`/${val}/dir`)= 'Файлы'
-                        td
-                            a(href=`/${val}/commit`)= 'Коммиты'
+        tbody
+            each val in branches
+                tr(class="table__branch branch")
+                    td(class="branch__name")
+                        a=val
+                    td(class="branch__dir")
+                        a(href=`/${val}/dir`)= 'Файлы'
+                    td(class="branch__commit")
+                        a(href=`/${val}/commit`)= 'Коммиты'

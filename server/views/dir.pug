@@ -4,14 +4,14 @@ block content
     .back
     table(class='table')
         tr
-            th= 'Files'
+            th(class='title-dir')= 'Files'
             tbody
                 each val in fileList
-                    tr
+                    tr(class='table-dir')
                     if (val.type === 'blob')
-                        td
+                        td(class='blob')
                             a(href=`/file/${val.hash}`)= val.name
                     else
-                        td
+                        td(class='tree')
                             .folder
                             a(href=`/dir/${val.hash}`)= val.name
