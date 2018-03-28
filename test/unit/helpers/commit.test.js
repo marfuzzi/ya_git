@@ -1,8 +1,6 @@
 const expect = require('chai').expect;
 
-const commit = require('../../server/helpers/commit');
-const myRepo = require('../../server/config/config').pathToFile;
-const branch = 'master';
+const commit = require('../../../server/helpers/commit');
 
 
 describe('Commit', () => {

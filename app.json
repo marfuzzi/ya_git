@@ -1,16 +1,14 @@
 {
-    "name": "task-4-node",
+    "name": "ya_git",
     "scripts": {
-      "postdeploy": "npm run test"
+    },
+    "env": {
     },
     "formation": {
-      "web": {
-        "quantity": 1
-      }
     },
+    "addons": [
+    ],
     "buildpacks": [
-      {
-        "url": "heroku/nodejs"
-      }
+
     ]
 }

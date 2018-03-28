@@ -1,8 +1,8 @@
 const chai = require('chai');
 const {expect, should} = chai;
 
-const myRepo = require('../../server/config/config').pathToFile;
-const execProcess = require('../../server/utils/execProcess');
+const myRepo = require('../../../server/config/config').pathToFile;
+const execProcess = require('../../../server/utils/execProcess');
 
 describe('execProcess', () => {
     describe('git log', () => {

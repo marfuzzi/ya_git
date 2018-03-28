@@ -1,5 +1,5 @@
 const expect = require('chai').expect;
-const branch = require('../../server/helpers/branch');
+const branch = require('../../../server/helpers/branch');
 
 describe('Branch', () => {
     describe('getListBranch', () => {

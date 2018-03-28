@@ -1,6 +1,6 @@
 const expect = require('chai').expect;
 
-const dir = require('../../server/helpers/dir');
+const dir = require('../../../server/helpers/dir');
 
 describe('Dir', () => {
     describe('getTypeHashName', () => {

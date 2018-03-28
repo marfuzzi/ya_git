@@ -1,6 +1,6 @@
 const expect = require('chai').expect;
 const stub = require('../stub/childProcessStub');
-const branchController = require('../../server/controllers/branchController');
+const branchController = require('../../../server/controllers/branchController');
 
 class Res {
     render(page, data) {

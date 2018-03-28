@@ -1,21 +1,40 @@
-sudo: required
+sudo: false
 language: node_js
-
 node_js:
- - 'node'
- - 8
-
-install:
- - npm install
-
+- node
+- 8
+before_script:
+- npm i
 script:
- - npm run lint
- - npm run build
+- npm run lint
+- npm run test
+- npm run build
+cache:
+  directories:
+  - node_modules
 
-services:
- - docker
+aliases:
+  deploy: &deploy
+    api_key:
+      secure: c9OMoHzV8R63oXVEVDev1eS2lGpWCgxt+BydXZylbKpdK3H0MdWtv5eDGxdw57KhxBO6D6HLtfE/iFfc4GH0L7zy56D1tzXzh1O32E7SoUpyZQzVvusJgP4MbHbe5ulmMXLb9dcVPpHmHaVc4z1qjAp4FHwONYX34l3/MP4KURn/p8dEMuUFiSSBkdljJPVtE8eLoX5dlBQK2Tuz81OsuYnwp91t5s0klpXQnEJ83j5LFLPTjoPWgmcMGES212Vd5chyMSmgasBei/G4ru3ebPsAWl8O0z0ObJW+G4SZ2FlLZeSc+BkAr6WYJ7V5SMZZgtH84ywl7j/sHv/qo7LogJG+vXpcZFZP5KyUdYGGR1TNPjh6Rg+M3VF4pS5iReij/a04waS2thpyUhrNCROa2/5XI1qekXAMUi1ZA/O3/KBJ6Di2cHg6JqKgAJ7JFwQEW09rPYgcDYDuUxdgH8lWNHsJFYw+tYSY0GTBOAi57VEMP6+xnOd0mPopatTD8eoGBj0fGkVH71+rk3X4BxAnid3+Hv434yTJC2E8EosGqH1bS22bSx0prT1/IVwFukxJspDuZ/Kikshdda0NDFVxero2ne9dFiWy1LryejuG9wTuxD+sVG60kzd8LrjZwlPdbAjsOXLZfeAdv1R6nFXKUmMFKrd94sIZ8RqG+4duA9A=
+    skip_cleaning: true
 
- deploy:
-  provider: heroku
-  api_key:
-    secure: ""
+jobs:
+  include:
+  - stage: Deploy (development)
+    if: tag IS blank
+    deploy:
+      <<: *deploy
+      app: ya-git-dev
+      on:
+        all_branches: true
+  - stage: Deploy (production)
+    if: tag IS present
+    deploy:
+      <<: *deploy
+      skip_cleanup: true
+      app: ya-git-prod
+      on:
+        tags: true
+        all_branches: true
+

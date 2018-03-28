@@ -1,6 +1,6 @@
 const expect = require('chai').expect;
 const stub = require('../stub/childProcessStub');
-const fileController = require('../../server/controllers/fileController');
+const fileController = require('../../../server/controllers/fileController');
 
 class Res {
     render(page, data) {

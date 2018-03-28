@@ -1,19 +1,19 @@
 FROM node:8
 
-RUN mkdir /app
+RUN mkdir /dir
 
-WORKDIR /app
+WORKDIR /dir
 
-COPY . /app
+COPY . /dir
 
-RUN git clone https://github.com/marfuzzi/md2xliff.git test-git
+RUN git clone https://github.com/marfuzzi/ya_git ya-git
 
-WORKDIR /app/test-git
+WORKDIR /dir/ya-git
 
 # Подтянуть все веточки
 RUN for branch in $(git branch --all | grep '^\s*remotes' | egrep --invert-match '(:?HEAD|master)$'); do git branch --track "${branch##*/}" "$branch"; done
 
-WORKDIR /app
+WORKDIR /dir
 
 RUN npm install
 
