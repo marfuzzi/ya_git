@@ -9,7 +9,7 @@
     "test": "mocha test/unit/utils/*.test.js && mocha test/unit/controllers/*.test.js && mocha test/unit/helpers/*.test.js",
     "hermione": "hermione",
     "clean": "rimraf node_modules",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
   },
   "dependencies": {
     "cookie-parser": "~1.4.3",
