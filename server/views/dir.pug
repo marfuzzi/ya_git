@@ -8,10 +8,10 @@ block content
             tbody
                 each val in fileList
                     tr(class='table-dir')
-                    if (val.type === 'blob')
-                        td(class='blob')
-                            a(href=`/file/${val.hash}`)= val.name
-                    else
-                        td(class='tree')
-                            .folder
-                            a(href=`/dir/${val.hash}`)= val.name
+                        if (val.type === 'blob')
+                            td(class='blob')
+                                a(href=`/file/${val.hash}`)= val.name
+                        else
+                            td(class='tree')
+                                .folder
+                                a(href=`/dir/${val.hash}`)= val.name

@@ -3,9 +3,7 @@ const assert = require('assert');
 describe('Страница с коммитами', () => {
     beforeEach(function () {
         return this.browser
-            .url('/')
-            .$('.branch__commit a')
-            .click();
+            .url('/master/commit');
     });
 
     it('Отображается заголовок таблицы с данными о коммитах', function () {
@@ -15,7 +13,6 @@ describe('Страница с коммитами', () => {
                 assert.equal(e, true);
             });
     });
-
     it('Переход в дирректорию при клике на коммит', function () {
         return this.browser
             .click('.commit__hash a')
@@ -24,6 +21,20 @@ describe('Страница с коммитами', () => {
                 assert.equal(title, 'Files');
             });
     });
-    // TODO
-    // отображение информации по коммитам
+    it('Корректно отображаются файлы в коммите 1036714', function () {
+        return this.browser
+            .click('.commit__hash a[href*="dir/1036714"]')
+            .getText('.table-dir')
+            .then((text) => {
+                assert.deepEqual(text, ['.DS_Store', 'README.md', 'index.html', 'index.js', 'style.css']);
+            });
+    });
+    it('Корректно отображаются файлы в коммите 2da0b10', function () {
+        return this.browser
+            .click('.commit__hash a[href*="dir/2da0b10"]')
+            .getText('.table-dir')
+            .then((text) => {
+                assert.deepEqual(text, ['.DS_Store', 'README.md', 'app']);
+            });
+    });
 });

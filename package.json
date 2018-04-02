@@ -6,7 +6,7 @@
     "build": "npm run lint && gulp build",
     "dev": "export NODE_ENV=development&& nodemon ./bin/www",
     "lint": "eslint --ignore-path .gitignore . && csscomb -v client/scss/*.scss",
-    "test": "mocha test/unit/controllers/*.test.js && mocha test/unit/helpers/*.test.js",
+    "test": "mocha test/unit/**/*.test.js",
     "hermione": "hermione",
     "clean": "rimraf node_modules",
     "deploy": "gh-pages -d build"

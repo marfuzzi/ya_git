@@ -33,7 +33,7 @@ describe('Главная страница', () => {
             .url('/')
             .getText('.branch__dir')
             .then((text) => {
-                assert.deepEqual(text[0], 'Файлы');
+                assert.deepEqual(text, Array(3).fill('Файлы'));
             });
     });
     it('Отображается ссылка выбора коммитов для каждой ветки', function () {
@@ -41,7 +41,15 @@ describe('Главная страница', () => {
             .url('/')
             .getText('.branch__commit')
             .then((text) => {
-                assert.deepEqual(text[0], 'Коммиты');
+                assert.deepEqual(text, Array(3).fill('Коммиты'));
+            });
+    });
+    it('Корректно отображаются названия веток', function () {
+        return this.browser
+            .url('/')
+            .getText('.branch__name')
+            .then((text) => {
+                assert.deepEqual(text, ['first', 'master', 'second']);
             });
     });
     it('По клику на коммит ветки переход на страницу коммитов ветки', function () {
@@ -63,7 +71,6 @@ describe('Главная страница', () => {
                 assert.equal(url, branchCommitLink);
             });
     });
-
     it('По клику на дирректорию ветки переход на страницу файлов ветки', function () {
         let branchFileLink = '';
 
