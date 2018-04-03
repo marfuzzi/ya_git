@@ -1,5 +1,7 @@
 # Logs
 npm-debug.*
+coverage/
+.nyc_output
 
 # Editor
 .vscode
