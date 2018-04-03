@@ -109,14 +109,15 @@ Server:
 
 <a name="tests"><h2>Тесты</h2></a>
 
-Внимание!
-* Для запуска unit-тестов достаточно указать путь к любому локальному репозиторию в файле server/config/config.js.
-* Для запуска интеграционных тестов необходимо склонировать тестовый репозиторий https://github.com/marfuzzi/ya_test_git.
-Указать путь к тестовому репозиторию в файле server/config/config.js.
+# Внимание!
+* Для запуска тестов необходимо разархивировать тестовый репозиторий, который находится в корне проекта.
 
 **Запуск приложения**
 ```
+git clone https://github.com/marfuzzi/ya_git.git
+cd ya_git
 npm i
+tar -xvf ya_test_git.tar
 npm run dev
 ```
 Открываем по адресу http://localhost:3000
@@ -132,7 +133,7 @@ npm run dev
 **Интеграционные тесты**
 * Запуск:
     1. В отдельной вкладке ```selenium-standalone start```
-    2. В отдельной вкладке ```npm start``` или ```npm run dev```
+    2. В отдельной вкладке ```npm run dev```
     3. В отдельной вкладке ```npm run hermione```
 
 * Тесты находятся в папке /test/hermione/
